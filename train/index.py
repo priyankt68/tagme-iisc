@@ -108,7 +108,7 @@ for i in range(len(vdatas)):
 submit = open('submit.txt','w')
 submit.writelines(submitlabel)	
 
-submit.write("tst")
+
 
 
 
