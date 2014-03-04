@@ -2,6 +2,8 @@ import numpy as np
 from sklearn import svm
 features = []
 filename=[]
+vfeatures = []
+vfilename=[]
 data = np.genfromtxt('feature_vectors.txt')
 
 datas=np.empty([500,240])
@@ -68,9 +70,22 @@ vdatas=np.empty([500,240])
 
 print "length of the vdata : ", len(vdata)
 
+print vdata[0]
 
 for i in range(500):
 	vdatas[i] = vdata[i][1:241]          # storing the feature vectors
+
+
+#Reading the filenames FOR validation dataset
+
+readfilename = open('../Validation/feature_vectors.txt','r')
+
+for line in readfilename:
+	vfeatures.append((line.split(" ")))
+	
+for i in range(500):
+	vfilename.append(vfeatures[i][0])    # storing the filenames
+
 
 print "Predicting for validation data"
 
@@ -83,9 +98,17 @@ vlab=[]
 for i in range(len(vdatas)):
 	vlabel[i] = clf.predict(vdatas[i])
 	vlab.append(str(vlabel[i]))
-	print "for",i,p[str(vlab[i])]  
+	#print "for",i,p[str(vlab[i])]  
 
 
+submitlabel=[]
+for i in range(len(vdatas)):
+	submitlabel.append('{} {}\n'.format(vfeatures[i][0],int(vlabel[i])))	
+	
+submit = open('submit.txt','w')
+submit.writelines(submitlabel)	
+
+submit.write("tst")
 
 
 
