@@ -1,7 +1,7 @@
 tagme-iisc
 ==========
 
-Machine learning programming contest by CSA, IISc, Bangalore
+Machine learning programming contest by CSA, IISc. Bangalore
 
 Problem Description
 ===================
